@@ -80,8 +80,6 @@ namespace RoulSim
             else return 3;
         }
 
-
-
         // TODO: Make real random function
         Random r = new Random();
         private int GetRandomNumber()

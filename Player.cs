@@ -18,6 +18,11 @@ namespace RoulSim
 
         // betting strategy
         int lastNumber = 0;
+        int lastColumn = 0;
+        int lastColumnCount;
+
+        // stats
+        int[] columnCount = new int[20];
 
         public Player(decimal initialMoney)
         {
@@ -26,8 +31,27 @@ namespace RoulSim
 
         public Bet GetBet()
         {
+            // get last columns
+            int column = GetColumn(lastNumber);
+            if( column > 0) // ignore Zero
+            {
+                if (column == lastColumn)
+                {
+                    lastColumnCount++;
+
+                    // update stats
+                    columnCount[lastColumnCount]++;
+                }
+                else
+                {
+                    lastColumn = column;
+                    lastColumnCount = 0;
+                }
+            }
+
+
             // bet strategy
-            Bet bet = new Bet();
+            Bet bet = new Bet();            
 
             // TODO!!!
             bet.PlaceBet = true;
@@ -47,6 +71,19 @@ namespace RoulSim
         public void LastNumberPlayed(int number)
         {
             lastNumber = number;
+        }
+
+        public int[] GetColumnStats()
+        {
+            return columnCount;
+        }
+
+        private int GetColumn(int number)
+        {
+            if (number == 0) return 0;
+            else if ((number % 3) == 1) return 1;
+            else if ((number % 3) == 2) return 2;
+            else return 3;
         }
     }
 }

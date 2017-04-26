@@ -51,26 +51,28 @@
             this.textBoxNumOfSpins = new System.Windows.Forms.TextBox();
             this.textBoxNumOfBets = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.textBoxColumnInARowCount = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelTable
             // 
-            this.panelTable.Location = new System.Drawing.Point(40, 88);
+            this.panelTable.Location = new System.Drawing.Point(22, 24);
             this.panelTable.Name = "panelTable";
-            this.panelTable.Size = new System.Drawing.Size(387, 610);
+            this.panelTable.Size = new System.Drawing.Size(374, 743);
             this.panelTable.TabIndex = 0;
             // 
             // timerTick
             // 
             this.timerTick.Enabled = true;
-            this.timerTick.Interval = 1000;
+            this.timerTick.Interval = 20;
             this.timerTick.Tick += new System.EventHandler(this.timerTick_Tick);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(445, 93);
+            this.label1.Location = new System.Drawing.Point(445, 40);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 13);
             this.label1.TabIndex = 1;
@@ -78,7 +80,7 @@
             // 
             // textBoxMoney
             // 
-            this.textBoxMoney.Location = new System.Drawing.Point(519, 90);
+            this.textBoxMoney.Location = new System.Drawing.Point(570, 37);
             this.textBoxMoney.Name = "textBoxMoney";
             this.textBoxMoney.Size = new System.Drawing.Size(117, 20);
             this.textBoxMoney.TabIndex = 2;
@@ -86,9 +88,9 @@
             // 
             // buttonStart
             // 
-            this.buttonStart.Location = new System.Drawing.Point(519, 128);
+            this.buttonStart.Location = new System.Drawing.Point(592, 75);
             this.buttonStart.Name = "buttonStart";
-            this.buttonStart.Size = new System.Drawing.Size(75, 23);
+            this.buttonStart.Size = new System.Drawing.Size(79, 31);
             this.buttonStart.TabIndex = 3;
             this.buttonStart.Text = "Start";
             this.buttonStart.UseVisualStyleBackColor = true;
@@ -97,7 +99,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(40, 778);
+            this.label3.Location = new System.Drawing.Point(38, 836);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 13);
             this.label3.TabIndex = 6;
@@ -105,7 +107,7 @@
             // 
             // textBoxColumnOccurences
             // 
-            this.textBoxColumnOccurences.Location = new System.Drawing.Point(98, 775);
+            this.textBoxColumnOccurences.Location = new System.Drawing.Point(111, 833);
             this.textBoxColumnOccurences.Name = "textBoxColumnOccurences";
             this.textBoxColumnOccurences.ReadOnly = true;
             this.textBoxColumnOccurences.Size = new System.Drawing.Size(418, 20);
@@ -211,9 +213,9 @@
             this.listViewStats.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2});
-            this.listViewStats.Location = new System.Drawing.Point(659, 88);
+            this.listViewStats.Location = new System.Drawing.Point(713, 12);
             this.listViewStats.Name = "listViewStats";
-            this.listViewStats.Size = new System.Drawing.Size(222, 707);
+            this.listViewStats.Size = new System.Drawing.Size(280, 828);
             this.listViewStats.TabIndex = 11;
             this.listViewStats.UseCompatibleStateImageBehavior = false;
             this.listViewStats.View = System.Windows.Forms.View.Details;
@@ -231,7 +233,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(40, 718);
+            this.label2.Location = new System.Drawing.Point(38, 776);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(36, 13);
             this.label2.TabIndex = 12;
@@ -239,7 +241,7 @@
             // 
             // textBoxNumOfSpins
             // 
-            this.textBoxNumOfSpins.Location = new System.Drawing.Point(98, 715);
+            this.textBoxNumOfSpins.Location = new System.Drawing.Point(111, 773);
             this.textBoxNumOfSpins.Name = "textBoxNumOfSpins";
             this.textBoxNumOfSpins.ReadOnly = true;
             this.textBoxNumOfSpins.Size = new System.Drawing.Size(178, 20);
@@ -247,7 +249,7 @@
             // 
             // textBoxNumOfBets
             // 
-            this.textBoxNumOfBets.Location = new System.Drawing.Point(98, 741);
+            this.textBoxNumOfBets.Location = new System.Drawing.Point(111, 799);
             this.textBoxNumOfBets.Name = "textBoxNumOfBets";
             this.textBoxNumOfBets.ReadOnly = true;
             this.textBoxNumOfBets.Size = new System.Drawing.Size(178, 20);
@@ -256,17 +258,36 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(40, 744);
+            this.label4.Location = new System.Drawing.Point(38, 802);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(31, 13);
             this.label4.TabIndex = 14;
             this.label4.Text = "Bets:";
             // 
+            // textBoxColumnInARowCount
+            // 
+            this.textBoxColumnInARowCount.Location = new System.Drawing.Point(161, 871);
+            this.textBoxColumnInARowCount.Name = "textBoxColumnInARowCount";
+            this.textBoxColumnInARowCount.ReadOnly = true;
+            this.textBoxColumnInARowCount.Size = new System.Drawing.Size(783, 20);
+            this.textBoxColumnInARowCount.TabIndex = 17;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(45, 874);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(76, 13);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "Column Count:";
+            // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(914, 847);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.ClientSize = new System.Drawing.Size(1077, 945);
+            this.Controls.Add(this.textBoxColumnInARowCount);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.textBoxNumOfBets);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textBoxNumOfSpins);
@@ -312,6 +333,8 @@
         private System.Windows.Forms.TextBox textBoxNumOfSpins;
         private System.Windows.Forms.TextBox textBoxNumOfBets;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBoxColumnInARowCount;
+        private System.Windows.Forms.Label label5;
     }
 }
 

@@ -73,6 +73,14 @@ namespace RoulSim
                 }
                 textBoxNumOfSpins.Text = numberOfSpins.ToString();
                 textBoxNumOfBets.Text = numberOfBets.ToString();
+
+                int[] columnInARowCount = player.GetColumnStats();
+                string columInARowCnt = "";
+                foreach (int i in columnInARowCount)
+                {
+                    columInARowCnt += string.Format("{0}, ", i);
+                }
+                textBoxColumnInARowCount.Text = columInARowCnt;
             }
         }
 
@@ -116,42 +124,44 @@ namespace RoulSim
                 buttonStart.Text = "Start";
                 textBoxMoney.ReadOnly = false;
             }
+
+            radioButton_CheckedChanged(new object(), new EventArgs());
         }
 
         private void radioButton_CheckedChanged(object sender, EventArgs e)
         {
-            if (sender == radioButtonSlow)
+            if (radioButtonSlow.Checked)
             {
                 timerTick.Interval = 1000;
                 FastPlayStepSize = 1;
             }
 
-            else if (sender == radioButtonFast)
+            else if (radioButtonFast.Checked)
             {
                 timerTick.Interval = 100;
                 FastPlayStepSize = 1;
             }
-            else if (sender == radioButtonMegaFast)
+            else if (radioButtonMegaFast.Checked)
             {
                 timerTick.Interval = 10;
                 FastPlayStepSize = 1;
             }
-            else if (sender == radioButtonSpeed100)
+            else if (radioButtonSpeed100.Checked)
             {
                 timerTick.Interval = 10;
                 FastPlayStepSize = 100;
             }
-            else if (sender == radioButtonSpeed1000)
+            else if (radioButtonSpeed1000.Checked)
             {
                 timerTick.Interval = 10;
                 FastPlayStepSize = 1000;
             }
-            else if (sender == radioButtonSpeed10000)
+            else if (radioButtonSpeed10000.Checked)
             {
                 timerTick.Interval = 10;
                 FastPlayStepSize = 10000;
             }
-            else if (sender == radioButtonSpeed100000)
+            else if (radioButtonSpeed100000.Checked)
             {
                 timerTick.Interval = 10;
                 FastPlayStepSize = 100000;
