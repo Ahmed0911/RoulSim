@@ -60,6 +60,11 @@ namespace RoulSim
                     lastColumnCount = 0;
                 }
             }
+            else
+            {
+                lastColumn = column;
+                lastColumnCount = 0;
+            }
 
 
             // bet strategy
