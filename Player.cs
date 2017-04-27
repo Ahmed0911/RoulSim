@@ -16,17 +16,29 @@ namespace RoulSim
     {
         public decimal Money;
 
+        enum EBettingPhase {  Wait, Bet, SecondBet };
+        EBettingPhase strategyBettingPhase;
+
         // betting strategy
         int lastNumber = 0;
         int lastColumn = 0;
         int lastColumnCount;
 
+        int strategyColInRow;
+        decimal strategyBetAmount;
+
         // stats
         int[] columnCount = new int[20];
+
+        int statBets = 0;
+        int statSecondBets = 0;
 
         public Player(decimal initialMoney)
         {
             Money = initialMoney;
+            strategyBettingPhase = EBettingPhase.Wait;
+            statBets = 0;
+            statSecondBets = 0;
         }
 
         public Bet GetBet()
@@ -53,9 +65,28 @@ namespace RoulSim
             // bet strategy
             Bet bet = new Bet();            
 
-            // TODO!!!
-            bet.PlaceBet = true;
-            bet.Amount = 1;
+            if( strategyBettingPhase == EBettingPhase.Wait)
+            {
+                // place initial bet?
+                if( (column == 1) && lastColumnCount == strategyColInRow )
+                {
+                    bet.PlaceBet = true;
+                    bet.Amount = strategyBetAmount;
+                    strategyBettingPhase = EBettingPhase.Bet;
+                    statBets++;
+                }
+            }
+            else if(strategyBettingPhase == EBettingPhase.Bet)
+            {
+                // make second bet?
+                if (column == 0 || column == 1)
+                {
+                    bet.PlaceBet = true;
+                    bet.Amount = strategyBetAmount*3;
+                    strategyBettingPhase = EBettingPhase.Wait; // done
+                    //statSecondBets++;
+                }
+            }            
 
             // give money
             Money -= (bet.Amount*2); // two columns in one bet!
@@ -78,12 +109,24 @@ namespace RoulSim
             return columnCount;
         }
 
+        public void GetBetStats(out int bets, out int secondBets)
+        {
+            bets = statBets;
+            secondBets = statSecondBets;
+        }
+
         private int GetColumn(int number)
         {
             if (number == 0) return 0;
             else if ((number % 3) == 1) return 1;
             else if ((number % 3) == 2) return 2;
             else return 3;
+        }
+
+        public void SetBettingStrategy(decimal betAmount, int betColInRow)
+        {
+            strategyColInRow = betColInRow;
+            strategyBetAmount = betAmount;
         }
     }
 }

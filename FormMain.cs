@@ -37,8 +37,6 @@ namespace RoulSim
 
         private void timerTick_Tick(object sender, EventArgs e)
         {
-            table.Draw();
-
             if(GameActive)
             {
                 // Play step
@@ -48,7 +46,7 @@ namespace RoulSim
                 }
                 // DRAW
                 // update table
-                table.Draw(rouletteSys.GetNumber());
+                //table.Draw(rouletteSys.GetNumber());
 
                 // update stats
                 textBoxMoney.Text = player.Money.ToString();
@@ -81,6 +79,17 @@ namespace RoulSim
                     columInARowCnt += string.Format("{0}, ", i);
                 }
                 textBoxColumnInARowCount.Text = columInARowCnt;
+
+                int statBets;
+                int statSecondBets;
+                player.GetBetStats(out statBets, out statSecondBets);
+
+                textBoxStatBets.Text = statBets.ToString();
+                textBoxStatSecondBets.Text = statSecondBets.ToString();
+            }
+            else
+            {
+                //table.Draw();
             }
         }
 
@@ -114,6 +123,11 @@ namespace RoulSim
                 buttonStart.Text = "Stop";
 
                 player = new Player(initialMoney);
+
+                // betting strategy
+                decimal betAmount = decimal.Parse(textBoxBetAmount.Text);
+                int betColInRow = int.Parse(textBoxColumnInRow.Text);
+                player.SetBettingStrategy(betAmount, betColInRow);
                 GameActive = true;
 
             }
