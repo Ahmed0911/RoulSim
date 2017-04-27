@@ -84,8 +84,9 @@ namespace RoulSim
                     bet.PlaceBet = true;
                     bet.Amount = strategyBetAmount*3;
                     strategyBettingPhase = EBettingPhase.Wait; // done
-                    //statSecondBets++;
+                    statSecondBets++;
                 }
+                else strategyBettingPhase = EBettingPhase.Wait; // done
             }            
 
             // give money
